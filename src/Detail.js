@@ -25,9 +25,6 @@ const Detail = (props) => {
                                 onClick={() => {
                                     setRate(idx + 1);
                                 }}
-                                onMouseOver={() => {
-                                    setRate(idx + 1);
-                                }}
                                 style={{
                                     backgroundColor: rate < idx + 1 ? "#ddd" : "cornflowerblue",
                                 }}
@@ -36,7 +33,7 @@ const Detail = (props) => {
                     })}
                 </div>
 
-                <button className="btn10"
+                <button className="detailbutton"
                     onClick={() => {
                         history.push('/');
                     }}

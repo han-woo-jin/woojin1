@@ -11,7 +11,7 @@ const Main = (props) => {
     const 요일점수 = 요일.map((week, idx) => {
         return {
             day: 요일[idx],
-            rate: getRandom(1, 5),
+            rate: getRandom(-1, 5),
         };
     });
 
