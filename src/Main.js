@@ -6,8 +6,9 @@ const Main = (props) => {
     const history = useHistory();
     const getRandom = (min, max) =>
         Math.floor(Math.random() * (max - min) + min);
-    const 요일 = ['월', '화', '수', '목', '금', '토', '일']
-    // const score = [3, 2, 4, 5, 3, 4, 1];
+    const 요일 = ['일', '월', '화', '수', '목', '금', '토', '일', '월', '화', '수', '목', '금', '토']
+    const 오늘요일 = new Date().getDay();
+
     const 요일점수 = 요일.map((week, idx) => {
         return {
             day: 요일[idx],
@@ -25,26 +26,30 @@ const Main = (props) => {
 
                 {요일점수.map((d, i) => {
                     return (
-                        <div className='weekbox'>
-                            <p style={{ margin: "0.5px" }}>
-                                {요일[i]}
-                            </p>
-                            {Array.from({ length: 5 }, (dd, k) => {
-                                return (
-                                    <div className='circle'
-                                        key={k}
-                                        style={{
-                                            backgroundColor: d.rate < k ? "#ddd" : "cornflowerblue",
-                                        }}
-                                    ></div>
-                                );
-                            })}
-                            <div className='tri'
-                                onClick={() => {
-                                    history.push(`/detail/${요일[i]}`);
-                                }}
-                            ></div>
-                        </div>
+                        i < 7
+                            ?
+                            <div className='weekbox'>
+                                <p style={{ margin: "0.5px" }}>
+                                    {요일[i + 오늘요일]}
+                                </p>
+                                {Array.from({ length: 5 }, (dd, k) => {
+                                    return (
+                                        <div className='circle'
+                                            key={k}
+                                            style={{
+                                                backgroundColor: d.rate < k ? "#ddd" : "cornflowerblue",
+                                            }}
+                                        ></div>
+                                    );
+                                })}
+                                <div className='tri'
+                                    onClick={() => {
+                                        history.push(`/detail/${요일[i + 오늘요일]}`);
+                                    }}
+                                ></div>
+                            </div>
+                            :
+                            null
                     );
                 })}
             </div>
